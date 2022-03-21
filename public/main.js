@@ -11,6 +11,6 @@ const change = (e) => {
     aiInput.innerText = `Computadora: ${game.player2.choice}`;
     resultInput.innerText = `Resultado: ${game.result}`;
 };
-document.getElementById("Piedra").addEventListener("click", change);
-document.getElementById("Papel").addEventListener("click", change);
-document.getElementById("Tijera").addEventListener("click", change);
+document.getElementById("👊").addEventListener("click", change);
+document.getElementById("✋").addEventListener("click", change);
+document.getElementById("✌️").addEventListener("click", change);

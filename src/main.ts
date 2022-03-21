@@ -16,6 +16,6 @@ const change = (e: Event) =>{
     resultInput!.innerText = `Resultado: ${game.result}`
 }
 
-document.getElementById("Piedra")!.addEventListener("click", change);
-document.getElementById("Papel")!.addEventListener("click", change);
-document.getElementById("Tijera")!.addEventListener("click", change);
+document.getElementById("👊")!.addEventListener("click", change);
+document.getElementById("✋")!.addEventListener("click", change);
+document.getElementById("✌️")!.addEventListener("click", change);

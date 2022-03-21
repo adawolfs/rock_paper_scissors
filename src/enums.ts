@@ -1,7 +1,7 @@
 export enum Choice {
-    STONE = 'Piedra',
-    PAPER = 'Papel',
-    SCISSORS = 'Tijera'
+    STONE = '👊',
+    PAPER = '✋',
+    SCISSORS = '✌️',
 }
 
 export enum Result {
