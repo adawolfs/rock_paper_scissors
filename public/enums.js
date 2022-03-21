@@ -6,7 +6,7 @@ export var Choice;
 })(Choice || (Choice = {}));
 export var Result;
 (function (Result) {
-    Result["WIN"] = "Ganaste";
-    Result["LOSE"] = "Perdiste";
-    Result["DRAW"] = "Empate";
+    Result["WIN"] = "Ganaste! \uD83C\uDF89";
+    Result["LOSE"] = "Perdiste \uD83D\uDE2D";
+    Result["DRAW"] = "Empate \uD83D\uDE10";
 })(Result || (Result = {}));

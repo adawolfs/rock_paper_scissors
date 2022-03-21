@@ -5,7 +5,7 @@ export enum Choice {
 }
 
 export enum Result {
-    WIN = 'Ganaste',
-    LOSE = 'Perdiste',
-    DRAW = 'Empate'
+    WIN = 'Ganaste! 🎉',
+    LOSE = 'Perdiste 😭',
+    DRAW = 'Empate 😐',
 }
