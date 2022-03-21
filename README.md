@@ -18,5 +18,9 @@ tsc
 tsc -w
 ```
 
+## Live Demo
+
+- https://adawolfs.github.io/rock_paper_scissors/
+
 ## Docs
 - https://www.typescriptlang.org/docs/handbook/compiler-options.html
