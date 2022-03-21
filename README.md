@@ -8,6 +8,7 @@ Este es un juego de **piedra, papel o tijera**. escrito en TypeScript.
 - JavaScript
 
 ## Transpile
+
 ```
 tsc
 ```
@@ -16,3 +17,6 @@ tsc
 ```
 tsc -w
 ```
+
+## Docs
+- https://www.typescriptlang.org/docs/handbook/compiler-options.html
