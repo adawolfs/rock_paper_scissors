@@ -1,10 +1,11 @@
 import { ComputerAI } from "./ai.js";
-import { Player } from "./player.js";
+import { Player } from "./classes.js";
+import { Choice, Result } from "./enums.js";
+
 export class Game {
     constructor(public player1: Player, public player2: Player) {
         console.log('Game is ready...');
     }
-
     private _result: string = "";
 
     public get result(): string {
@@ -14,44 +15,48 @@ export class Game {
         this._result = value;
     }
 
+    private _applyRules() {
+        switch (this.player1.choice) {
+            case Choice.STONE:
+                if (this.player2.choice === Choice.STONE) {
+                    this.result = Result.DRAW;
+                }
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.LOSE;
+                }
+                else {
+                    this.result = Result.WIN;
+                }
+                break;
+            case Choice.PAPER:
+                if (this.player2.choice === Choice.STONE) {   
+                    this.result = Result.WIN;
+                }
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.DRAW;
+                }
+                else {
+                    this.result = Result.LOSE;
+                }
+                break;
+            case Choice.SCISSORS:
+                if (this.player2.choice === Choice.STONE) {
+                    this.result = Result.LOSE;
+                }
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.WIN;
+                }
+                else {
+                    this.result = Result.DRAW;
+                }
+                break;
+        }
+    }
+
     public play() {
         console.log('Game is running...');
         this.player2.choice = this.getComputerChoice();
-        switch (this.player1.choice) {
-            case 'piedra':
-                if (this.player2.choice === 'piedra') {
-                    this.result = 'Empate';
-                }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Perdiste';
-                }
-                else {
-                    this.result = 'Ganaste';
-                }
-                break;
-            case 'papel':
-                if (this.player2.choice === 'piedra') {   
-                    this.result = 'Ganaste';
-                }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Empate';
-                }
-                else {
-                    this.result = 'Perdiste';
-                }
-                break;
-            case 'tijera':
-                if (this.player2.choice === 'piedra') {
-                    this.result = 'Perdiste';
-                }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Ganaste';
-                }
-                else {
-                    this.result = 'Empate';
-                }
-                break;
-        }           
+        this._applyRules();
     }
 
     getComputerChoice(): string {

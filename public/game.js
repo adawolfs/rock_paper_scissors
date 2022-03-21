@@ -1,4 +1,5 @@
 import { ComputerAI } from "./ai.js";
+import { Choice, Result } from "./enums.js";
 export class Game {
     constructor(player1, player2) {
         this.player1 = player1;
@@ -12,44 +13,47 @@ export class Game {
     set result(value) {
         this._result = value;
     }
-    play() {
-        console.log('Game is running...');
-        this.player2.choice = this.getComputerChoice();
+    _applyRules() {
         switch (this.player1.choice) {
-            case 'piedra':
-                if (this.player2.choice === 'piedra') {
-                    this.result = 'Empate';
+            case Choice.STONE:
+                if (this.player2.choice === Choice.STONE) {
+                    this.result = Result.DRAW;
                 }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Perdiste';
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.LOSE;
                 }
                 else {
-                    this.result = 'Ganaste';
+                    this.result = Result.WIN;
                 }
                 break;
-            case 'papel':
-                if (this.player2.choice === 'piedra') {
-                    this.result = 'Ganaste';
+            case Choice.PAPER:
+                if (this.player2.choice === Choice.STONE) {
+                    this.result = Result.WIN;
                 }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Empate';
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.DRAW;
                 }
                 else {
-                    this.result = 'Perdiste';
+                    this.result = Result.LOSE;
                 }
                 break;
-            case 'tijera':
-                if (this.player2.choice === 'piedra') {
-                    this.result = 'Perdiste';
+            case Choice.SCISSORS:
+                if (this.player2.choice === Choice.STONE) {
+                    this.result = Result.LOSE;
                 }
-                else if (this.player2.choice === 'papel') {
-                    this.result = 'Ganaste';
+                else if (this.player2.choice === Choice.PAPER) {
+                    this.result = Result.WIN;
                 }
                 else {
-                    this.result = 'Empate';
+                    this.result = Result.DRAW;
                 }
                 break;
         }
+    }
+    play() {
+        console.log('Game is running...');
+        this.player2.choice = this.getComputerChoice();
+        this._applyRules();
     }
     getComputerChoice() {
         return new ComputerAI().getChoice();

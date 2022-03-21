@@ -1,6 +1,7 @@
+import { Choice } from "./enums.js";
 export class ComputerAI {
     getChoice() {
-        const choices = ['piedra', 'papel', 'tijera'];
-        return choices[Math.floor(Math.random() * 3)];
+        let choices = [Choice.STONE, Choice.PAPER, Choice.SCISSORS];
+        return choices[Math.floor(Math.random() * choices.length)];
     }
 }
